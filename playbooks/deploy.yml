@@ -3,13 +3,9 @@
   hosts: localhost
   #  vars_files:
   #  - "../vaults/{{ env }}.yml"
-  roles:
-    - role: cnovak.homelab_config.create_vm2
-      tags:
-        - deploy_vm2
   tasks:
     - name: Include my custom collection
       ansible.builtin.import_role:
-        name: cnovak.homelab_config.create_vm
+        name: cnovak.homelab_config.create_vm2
       tags:
-        - deploy_vm
+        - deploy_vm2
