@@ -1,21 +1,5 @@
 ---
 - name: Playbook to configure homelab hypervisors
   hosts: localhost
-  #  vars_files:
-  #  - "../vaults/{{ env }}.yml"
   roles:
-    - role: cnovak.homelab_config.create_vm2
-      tags:
-        - deploy_vm2
-
-  tasks:
-    - name: Show the value of this test var
-      debug:
-        msg: "The value of this var is {{ vm_name }}"
-
-
-#    - name: Include my custom collection
-#      ansible.builtin.import_role:
-#      name: cnovak.homelab_config.create_vm2
-#      tags:
-#        - deploy_vm2
+    - role: cnovak.homelab_config.create_vm

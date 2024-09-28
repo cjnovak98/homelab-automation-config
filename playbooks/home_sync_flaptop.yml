@@ -1,0 +1,45 @@
+---
+- name: Playbook to syncrhonize home directories
+  hosts: all
+  become: true
+  tasks:
+
+    - name: Check if inventory contains only one host
+      ansible.builtin.set_fact:
+        single_host: "{{ groups['all'] | length == 1 }}"
+
+    - name: Fail if conditions are not met
+      ansible.builtin.fail:
+        msg: "Either more than one host is in the inventory, or the playbook is not being run by 'desired_username'."
+      when: not (single_host)
+
+    - name: Continue if conditions are met
+      ansible.builtin.debug:
+        msg: "Conditions are met. Proceeding with the playbook."
+      when: single_host
+
+    - name: Push from current host to other host
+      ansible.posix.synchronize:
+        src: /home/cnovak
+        dest: /home
+        archive: true
+        recursive: true
+        perms: true
+        delay_updates: true
+        mode: push
+        rsync_opts:
+          - "--omit-dir-times"
+      ignore_errors: true
+
+    - name: Pull from other host to current host
+      ansible.posix.synchronize:
+        src: /home/cnovak
+        dest: /home
+        archive: true
+        recursive: true
+        perms: true
+        delay_updates: true
+        mode: pull
+        rsync_opts:
+          - "--omit-dir-times"
+      ignore_errors: true
