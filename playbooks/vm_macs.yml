@@ -1,6 +1,0 @@
--   disk_path: ''
-    iso_name: ''
-    mac_address: ''
-    memory_in_kib: 6000000
-    num_vcpus: 4
-    vm_name: rhel9

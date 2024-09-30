@@ -6,7 +6,7 @@
   remote_user: cnovak
   tasks:
 
-    - name: Ensure zall packages are installed.
+    - name: Ensure all packages are installed.
       yum:
         name: "podman,bind-utils,cloud-init,python3-jmespath,cockpit,openssh-askpass,ansible,git"
         state: installed
