@@ -3,3 +3,18 @@ vm_name: rhel11
 #num_vcpus:
 #disk_path:
 #iso_name:
+
+common_packages:
+  - podman
+  - bind-utils
+  - libguestfs-tools
+  - cloud-init
+  - virt-install
+  - lm_sensors
+  - python3-jmespath
+  - cockpit
+  - cockpit-machines
+  - openssh-askpass
+  - nfs-utils
+  - ansible-core
+  - git
