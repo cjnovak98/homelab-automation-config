@@ -4,6 +4,14 @@ vm_name: rhel11
 #disk_path:
 #iso_name:
 
+users:
+  - cnovak
+  - mnovak
+  - kimstewart
+service_accounts:
+  - ansible
+
+
 common_packages:
   - podman
   - bind-utils
