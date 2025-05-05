@@ -1,5 +1,5 @@
 # homelab-automation-config
-This repo serves to be an example configuration of my homelab-automation collection.
+This repo serves to be an example configuration of my [homelab-automation](https://github.com/cjnovak98/homelab-automation) collection.
 
 
 # Ansible Configuration
@@ -50,4 +50,12 @@ Of those roles, here are their following functions
 
 ## Instructions
 
+First run to configure a new system:
+
+NOTE: SSH will need to be enabled on the target host.
+NOTE 2: You will need an SSH key generated, and the public key put into the "auth_keys" directory if you want password-less authentication to be configured on your target hosts
+
+1. Configure [your host inventory](inventory/inventory.ini)
+1. OPTIONAL: If you don't configure your host inventory, you can run a one shot by appending `-i <hostname_or_ip>,` making note to include the `,` to tell Ansible you are giving it a comma separated list. (Even if it's only one host)
+1. Once ready, run the following command to execute the configure_access playbook, which will run 2 roles from the collection. The `common` role, and the `configure_access` role. `ansible-playbook playbooks/configure_access.yaml -K --ask-pass -u <username> -p <password>`
 
