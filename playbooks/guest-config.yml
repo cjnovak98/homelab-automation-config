@@ -25,5 +25,5 @@
         - firewalld
         - cockpit
     - name: Configure Git
-      ansible.builtin.command: 
-        cmd: git config --global user.name "Christopher Novak" && git config --global user.email "cnovak@redhat.com"
+      ansible.builtin.command:
+        cmd: git config --global user.name "Your Name" && git config --global user.email "user@example.com"

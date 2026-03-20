@@ -1,0 +1,10 @@
+[hypervisors]
+hypervisor01.example.com
+hypervisor02.example.com
+hypervisor03.example.com
+localhost
+
+[workstations]
+workstation01.example.com
+workstation02.example.com
+192.168.1.100

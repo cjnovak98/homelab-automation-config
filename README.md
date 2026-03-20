@@ -37,15 +37,15 @@ For someone who is not used to Ansible, I'll explain a few fundementals.
 1. This repo makes use of a core Ansible feature called a "Collection" more info can be found at the [official documentation here](https://docs.ansible.com/ansible/latest/dev_guide/developing_collections_structure.html) The TL;DR is: An Ansible Collection is a logical structure for packaging up a collection of Ansible modules, variables or "scripts" for lack of better words. This can then be installed using the `ansible-galaxy` CLI, so it can be executed like a package.
 
 
-The `cnovak.homelab_automation` collection contains many roles. For information on Ansible roles, [look here](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html)
+The `cnovak.homelab_config` collection contains many roles. For information on Ansible roles, [look here](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_reuse_roles.html)
 
 Of those roles, here are their following functions
 
-* `cnovak.homelab_automation.common` - This is a "common" role that is executed before any other role, no matter which role is executed. This includes things like setting up NFS mounts and ensuring a standard set of packages are installed no matter what the system.
-* `cnovak.homelab_automation.configure_users` - The purpose of this role is to create or configure a standard set of user accounts, with trusted public keys for SSH access, and ensure user group access for any hypervisors in the environment. `wheel` and `libvirt` being key in my environment.
-* `cnovak.homelab_automation.create_vm` - 
-* `cnovak.homelab_automation.hypervisor_config` -
-* `cnovak.homelab_automation.sushy` - 
+* `cnovak.homelab_config.common` - This is a "common" role that is executed before any other role, no matter which role is executed. This includes things like setting up NFS mounts and ensuring a standard set of packages are installed no matter what the system.
+* `cnovak.homelab_config.configure_users` - The purpose of this role is to create or configure a standard set of user accounts, with trusted public keys for SSH access, and ensure user group access for any hypervisors in the environment. `wheel` and `libvirt` being key in my environment.
+* `cnovak.homelab_config.create_vm` - 
+* `cnovak.homelab_config.hypervisor_config` -
+* `cnovak.homelab_config.sushy` - 
 
 
 ## Instructions
@@ -55,7 +55,8 @@ First run to configure a new system:
 NOTE: SSH will need to be enabled on the target host.
 NOTE 2: You will need an SSH key generated, and the public key put into the "auth_keys" directory if you want password-less authentication to be configured on your target hosts
 
-1. Configure [your host inventory](inventory/inventory.ini)
+1. Create your inventory file by copying the example: `cp inventory/inventory.ini.example inventory/inventory.ini`
+1. Configure your host inventory in `inventory/inventory.ini` with your actual hosts
 1. OPTIONAL: If you don't configure your host inventory, you can run a one shot by appending `-i <hostname_or_ip>,` making note to include the `,` to tell Ansible you are giving it a comma separated list. (Even if it's only one host)
 1. Once ready, run the following command to execute the configure_access playbook, which will run 2 roles from the collection. The `common` role, and the `configure_access` role. `ansible-playbook playbooks/configure_access.yaml -K --ask-pass -u <username> -p <password>`
 

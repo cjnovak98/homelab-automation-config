@@ -1,2 +1,42 @@
-*.json
-*.pub
+# Ansible
+*.retry
+*.pyc
+__pycache__/
+
+# Exclude actual inventory files (keep examples)
+inventory/inventory.ini
+inventory/*.ini
+!inventory/inventory.ini.example
+
+# Vault passwords
+.vault_pass
+vault_pass.txt
+*vault*password*
+
+# SSH Keys
+*.key
+*.pem
+playbooks/auth_keys/*.pub
+
+# Generated files
+playbooks/mac_addresses.json
+
+# Environment
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local overrides
+local_*
